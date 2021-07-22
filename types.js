@@ -58,8 +58,3 @@ function objectParameter(option) {
 const [sum1, multiply1] = objectParameter({a: 2, b: 3});
 
 console.info(sum1, multiply1);
-
-
-function sum(a, b) {
-    
-}
