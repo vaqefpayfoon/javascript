@@ -5,7 +5,7 @@ function sum(arr) {
   return arr.reduce(reducer, initialValue);
 }
 
-// console.log(sum([1, 3, 5, 7])); // 16
+ // console.log(sum([1, 3, 5, 7])); // 16
 
 const lineItems = [
   { description: "Eggs (Dozen)", quantity: 1, price: 3, total: 3 },
@@ -13,7 +13,7 @@ const lineItems = [
   { description: "Butter", quantity: 2, price: 6, total: 12 },
 ];
 const result = lineItems.reduce((sum, li) => sum + li.total, 0);
-// console.log(result);
+console.log(result);
 
 const find = [1, 4, 7, 9];
 // console.log(find.some((x) => x === 20));
