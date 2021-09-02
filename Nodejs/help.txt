@@ -1,0 +1,3 @@
+npm init
+create your script => npm start is special after that what ever you are creating a script it should be like this npm run your script
+for rebuild and run during development you have to install package nodemone

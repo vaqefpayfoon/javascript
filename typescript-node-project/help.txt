@@ -1,0 +1,15 @@
+yarn is package manager like npm but its safer and faster and its develope by facebook
+yarn still using by npm
+most people syas using yarn instead of npm
+-------------------------------------------------------
+yarn.lock is file that lock the dependancy of module that breaks your app
+-------------------------------------------------------
+nvm node version management
+Volta handles node versions and can set a default version to load also
+
+volta install yarn
+volta pin yarn
+-------------------------------------------------------
+tsc --version
+show version of type script
+-------------------------------------------------------
