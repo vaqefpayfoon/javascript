@@ -1,9 +1,13 @@
-const http = require('http');
+const path = require('path');
 
-const routes = require('./routes');
+const express = require('express');
 
-console.log(routes.someText);
+const mainRoutes = require('./routes/index');
 
-const server = http.createServer(routes.handler);
+const app = express();
 
-server.listen(3000);
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(mainRoutes);
+
+app.listen(3000);
