@@ -1,0 +1,88 @@
+Closure = having outer function and inner function inside it
+
+DE structure = retrieve values from array or object
+let list = ['Apple','Banana','Craneberry', 'Date']
+
+let [one, two, three, four] = list
+
+let info = {
+    name:'Tom',
+    address:{
+        city:'Newcastle',
+        street:'Northumberland Street',
+        number:17
+    }
+}
+let {name,address:{city,street,number}} = info
+
+
+Map = map is enhanced version of object but still stands for key value 
+
+let arr = [1,2,3]
+let map = new Map([['fruit','apple'],['vegan','celery']])
+map.set('diary','milk')
+.set('meat','beef')
+.set(false,'false as val')
+.set(null,'null as val')
+.set(undefined,'undefined as val')
+.set(NaN,'NaN as val')
+.set(arr,'arr as val')
+console.log(map)
+
+
+map.forEach(function(value,key,obj){
+    console.log(key)
+})
+for(let [key,value] of map){
+    console.log(value)
+}
+for(let key of map.keys()){console.log(key)}
+for(let value of map.values()){console.log(value)}
+for(entry of map.entries()){console.log(entry)}
+
+SET = simplify array and removed indexing system and no duplicate values
+
+let arr = [1,2,3,1,2,3]
+let set = new Set(arr)   => this remove the duplicate values
+set.add(4).add(5)
+console.log(set)
+
+Converting set to array 
+Array.from(set) or console.log([…set])
+
+
+let list1 = ['Toyota','Nissan','Ford','GM','BMW','Mazda','Acura']
+let list2 = ['Nissan','Honda','Mazda','Lexus','Ford','BMW','Man']
+
+let both_lists = [...list1,...list2]
+
+let union = [...new Set(both_lists)]
+
+let intersection = list1.filter((item)=>{
+    return new Set(list2).has(item)
+})
+
+let difference = list1.filter((item)=>{
+    return !new Set(list2).has(item)
+})
+
+Symbol = is a data type for name convention that keeps property name unique
+
+
+generator function = the function* declaration creates a binding of a new generator function to a given name
+
+function* idMaker() {
+  let index = 0;
+  while (true) {
+    yield index++;
+  }
+}
+
+const gen = idMaker();
+
+console.log(gen.next().value); // 0
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2
+console.log(gen.next().value); // 3
+
+difference between promis and asyn method is we don't need then and catch function anymore

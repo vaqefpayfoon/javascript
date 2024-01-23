@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value. -->
+
+    <!-- <script>
+      const myPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("foo");
+        }, 300);
+      });
+
+      myPromise
+        .then(handleFulfilledA, handleRejectedA)
+        .then(handleFulfilledB, handleRejectedB)
+        .then(handleFulfilledC, handleRejectedC);
+
+      function handleFulfilledA() {
+        console.log("handleFulfilledA");
+      }
+
+      function handleFulfilledB() {
+        console.log("handleFulfilledB");
+      }
+
+      function handleFulfilledC() {
+        console.log("handleFulfilledC");
+      }
+
+      function handleRejectedA() {
+        console.log("handleRejectedA");
+      }
+
+      function handleRejectedB() {
+        console.log("handleRejectedB");
+      }
+
+      function handleRejectedC() {
+        console.log("handleRejectedC");
+      }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+    <script>
+      axios
+        .get("https://jsonplaceholder.typicode.com/todos/1")
+        .then(function (response) {
+          console.log(response.data);
+          return axios.get("https://jsonplaceholder.typicode.com/todos/2");
+        })
+        .then(function (response) {
+          console.log(response.data);
+          return axios.get("https://jsonplaceholder.typicode.com/todos/3");
+        })
+        .then(function (response) {
+          console.log(response.data);
+          //return axios.get('https://jsonplaceholder.typicode.com/todos/3')
+        })
+        .then((val) => {
+          console.log(val);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    </script>
+
+    <script>
+      let po = new Promise(function (resolve, reject) {
+        if (false) {
+          resolve("fulfilled promise...");
+        } else {
+          reject("rejected promise...");
+        }
+      });
+
+      po.then(
+        (val) => {
+          // onFulfilled
+          console.log(val);
+        },
+        (err) => {
+          console.log(err);
+        }
+      )
+        .catch((err) => {
+          // onRejected
+          console.log(err);
+        })
+        .finally(() => {
+          // onFinally
+          console.log("finally...");
+        });
+    </script> -->
+
+    <script>
+      let url_1 = "https://jsonplaceholder.typicode.com/todos/1";
+
+      function my_ajax(url) {
+        return new Promise((resolve, reject) => {
+          let xhr = new XMLHttpRequest();
+          xhr.open("GET", url, true);
+          xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+              if (this.status == 200) {
+                resolve(JSON.parse(this.responseText));
+              } else {
+                reject("ERR: " + this.status);
+              }
+            }
+          };
+          xhr.send();
+        });
+      }
+      let pr = my_ajax(url_1);
+      pr.then((val) => {
+        console.log(val);
+      }).catch((err) => {
+        console.log(err);
+      });
+
+      async function outer() {
+        console.log("program starts...");
+
+        let sv = await my_ajax(url_1);
+        console.log(sv);
+
+        console.log("program ends...");
+      }
+      outer();
+
+      async function outer() {
+        let num = 1;
+
+        await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            num++;
+            resolve("whatever...");
+          }, 1000);
+        });
+
+        console.log(num);
+      }
+      outer();
+    </script>
+  </head>
+  <body></body>
+</html>

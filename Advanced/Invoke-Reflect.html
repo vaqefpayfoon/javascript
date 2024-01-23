@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function test(arg1, arg2) {
+        console.log(arg1, arg2);
+        console.log(this);
+      }
+
+      let obj = {
+        title: "my obj",
+        id: 1984,
+      };
+
+      test.apply(obj,['apple','banana'])
+      Reflect.apply(test, obj, ["one", "two"]);
+
+      console.log(Reflect.has(obj, "id"));
+
+      console.log(Reflect.deleteProperty(obj, "title"));
+      function My_constructor(arg1, arg2) {
+        this.prop1 = arg1;
+        this.prop2 = arg2;
+      }
+
+      let obj2 = Reflect.construct(My_constructor, ["one", "two"]);
+      
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let car = {
+        engine: "petrol",
+        gearbox: "manual",
+      };
+      let car_proxy = new Proxy(car, {
+        // trap
+        get(target, prop, receiver) {
+          if (prop == "engine") {
+            return target[prop].toUpperCase();
+          } else if (prop == "receiver") {
+            return receiver;
+          } else {
+            return "access denied...";
+          }
+        },
+      });
+
+      let new_obj = Object.create(car_proxy);
+    </script>
+  </head>
+  <body></body>
+</html>

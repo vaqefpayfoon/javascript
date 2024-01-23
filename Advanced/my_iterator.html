@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let arr = ["a", "b", "c"];
+
+      arr[Symbol.iterator] = function () {
+        let that = this;
+        let index = 0;
+        return {
+          next() {
+            if (index < that.length) {
+              return {
+                value: that[index++].toUpperCase(),
+                done: false,
+              };
+            } else {
+              return {
+                value: undefined,
+                done: true,
+              };
+            }
+          },
+        };
+      };
+
+      for(let item of arr) {
+        console.log(arr);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
