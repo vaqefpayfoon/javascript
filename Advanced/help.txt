@@ -1,3 +1,5 @@
+//course name Your 2nd JavaScript Course Advanced Concepts and Algorithms 2020-12
+
 Closure = having outer function and inner function inside it
 
 DE structure = retrieve values from array or object
@@ -86,3 +88,6 @@ console.log(gen.next().value); // 2
 console.log(gen.next().value); // 3
 
 difference between promis and asyn method is we don't need then and catch function anymore
+
+
+The Proxy object allows you to create an object that can be used in place of the original object, but which may redefine fundamental Object operations like getting, setting, and defining properties.

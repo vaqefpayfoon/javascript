@@ -24,6 +24,24 @@
 
       let new_obj = Object.create(car_proxy);
     </script>
+
+    <script>
+      let car2 = {
+        engine: "petrol",
+        gearbox: "manual",
+        _id: 1984,
+      };
+      let car_proxy2 = new Proxy(car, {
+        // trap
+        get(target, prop, receiver) {
+          if (prop[0] == "_") {
+            return "access denied";
+          } else {
+            return target[prop];
+          }
+        },
+      });
+    </script>
   </head>
   <body></body>
 </html>
