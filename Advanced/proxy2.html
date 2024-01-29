@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let car = {
+        engine: "petrol",
+        gearbox: "manual",
+        _id: 1984,
+      };
+      let car_proxy = new Proxy(car, {
+        // trap
+        get(target, prop, receiver) {
+          if (prop[0] == "_") {
+            return "access denied";
+          } else {
+            return target[prop];
+          }
+        },
+        set(target, prop, val, receiver) {
+          if (prop[0] == "_") {
+            throw "cannot set value for this prop";
+          } else {
+            target[prop] = val.toUpperCase();
+          }
+        },
+        has(target, prop) {
+          if (prop[0] == "_") {
+            return false;
+          } else {
+            return Reflect.has(target, prop);
+          }
+        },
+        deleteProperty(target, prop) {
+          if (prop[0] == "_") {
+            return false;
+          } else {
+            return Reflect.deleteProperty(target, prop);
+          }
+        },
+      });
+
+      let new_obj = Object.create(car_proxy);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function My_constructor(msg) {
+        this.msg = msg;
+      }
+      let obj = new My_constructor("hello");
+
+      let proxy_constructor = new Proxy(My_constructor, {
+        construct(target, arg_list, new_target) {
+          new_target.static_prop = "static prop...";
+          arg_list[0] = arg_list[0].toUpperCase();
+          let obj = new target(arg_list);
+          obj.id = 1984;
+          obj.woak = 'woak';
+          return obj;
+        },
+      });
+
+      let obj_2 = new proxy_constructor("apple");
+    </script>
+  </head>
+  <body></body>
+</html>

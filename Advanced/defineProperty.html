@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let proxy = new Proxy(
+        {},
+        {
+          defineProperty(target, prop, descriptor) {
+            descriptor.value = "new val";
+            descriptor.writable = true;
+            descriptor.enumerable = true;
+            //descriptor.configurable = false
+            return Reflect.defineProperty(target, prop, descriptor);
+            //return false
+          },
+        }
+      );
+
+    //   proxy.msg = 'hello'
+      Object.defineProperty(proxy, "msg", {
+        value: "hi",
+        // writable, enumerable,
+        configurable: true,
+      });
+
+      console.log(proxy);
+      console.log(Object.getOwnPropertyDescriptors(proxy));
+    </script>
+  </head>
+  <body></body>
+</html>
